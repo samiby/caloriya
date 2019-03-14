@@ -2,7 +2,7 @@
 
 Caloriya est une application mobile simple, pratique, modulable & extensible pour celles ou ceux qui veulent calculer leurs besoins journaliers en calories.
 
-<a href='https://play.google.com/store/apps/details?id=com.caloriya.sami&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Disponible sur Google Play' src='https://play.google.com/intl/fr_FR/badges/images/generic/fr_badge_web_generic.png'/></a>
+<a href='https://play.google.com/store/apps/details?id=com.caloriya.sami&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Disponible sur Google Play' src='https://play.google.com/intl/fr_FR/badges/images/generic/fr_badge_web_generic.png'/></a><br>
 Google Play et le logo Google Play sont des marques de Google LLC.
 
 # Vidéo de Presentation:
