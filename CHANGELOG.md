@@ -9,3 +9,7 @@
 ## [1.2.0] - March 17, 2019
 
 * Fix Some Bugs.
+
+## [1.3.0] - March 18, 2019
+
+* Fix Some Bugs.
