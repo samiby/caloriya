@@ -8,6 +8,10 @@ Google Play et le logo Google Play sont des marques de Google LLC.
 # Vidéo de Presentation:
 Une Vidéo de Présentation est désormais disponible ici: https://youtu.be/OTqbDAbXWx0
 
+# <b>TODO</b>
+<li> Internationalization</li>
+<li> Tablet Support</li>
+
 # Licence
 
 The MIT License (MIT)

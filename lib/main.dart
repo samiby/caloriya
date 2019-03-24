@@ -88,8 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
     return new WillPopScope(
-        onWillPop: _onWillPop,
-    /* return new GestureDetector( */
+      onWillPop: _onWillPop,
+
+      /* return new GestureDetector( */
     child: new GestureDetector(
       onTap: (() => FocusScope.of(context).requestFocus(new FocusNode())),
 
@@ -166,12 +167,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         });
                       },
 
-                      // TODO: Essayer de centrer le texte
+                      // Centrer le texte
                       decoration: new InputDecoration(
                           //fillColor: Colors.grey[500],
                           labelText: "Entrez votre poids en kilos."
                       ),
-                      // TODO: Essayer de centrer le texte
+                      // Centrer le texte
 
                     ),
 
