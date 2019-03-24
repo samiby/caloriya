@@ -6,3 +6,6 @@
 
 * Fix Some Bugs.
 
+## [1.2.0] - March 17, 2019
+
+* Fix Some Bugs.
