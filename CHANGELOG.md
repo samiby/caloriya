@@ -21,3 +21,9 @@
 ## [1.4.1] - March 20, 2019
 
 * Fix Some Bugs.
+
+## [1.5.0] - March 25, 2019
+
+* Fix Some Bugs.
+* Add Support For Tablets.
+* Add English Language Support

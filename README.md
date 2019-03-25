@@ -2,6 +2,9 @@
 
 Caloriya est une application mobile simple, pratique, modulable & extensible pour celles ou ceux qui veulent calculer leurs besoins journaliers en calories.
 
+* Compatible Avec Les Tablettes
+* Prise En Charge De La Langue Anglaise
+
 <a href='https://play.google.com/store/apps/details?id=com.caloriya.sami&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Disponible sur Google Play' src='https://play.google.com/intl/fr_FR/badges/images/generic/fr_badge_web_generic.png'/></a><br>
 Google Play et le logo Google Play sont des marques de Google LLC.
 
@@ -9,8 +12,7 @@ Google Play et le logo Google Play sont des marques de Google LLC.
 Une Vidéo de Présentation est désormais disponible ici: https://youtu.be/OTqbDAbXWx0
 
 # <b>TODO</b>
-<li> Internationalization</li>
-<li> Tablet Support</li>
+<li>Prise En Charge De Plus De Langues</li>
 
 # Licence
 

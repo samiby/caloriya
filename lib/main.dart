@@ -1,5 +1,40 @@
+/*
+The MIT License (MIT)
+
+Copyright (c) 2019 Sami Benyoussef
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+This File Is Created By Sami Benyoussef
+
+Developer: Sami Benyoussef
+Email: contact@samibenyoussef.com
+Github Repo: https://github.com/samiby/caloriya
+
+*/
+
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import './localization.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,6 +43,30 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
+      // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+      localizationsDelegates: [
+        const LocalizationDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', 'US'),
+        const Locale('fr', 'FR'),
+      ],
+      localeResolutionCallback:
+          (Locale locale, Iterable<Locale> supportedLocales) {
+        for (Locale supportedLocale in supportedLocales) {
+          // Crashes on the following line
+          if (supportedLocale.languageCode == locale.languageCode ||
+              supportedLocale.countryCode == locale.countryCode) {
+            return supportedLocale;
+          }
+        }
+
+        return supportedLocales.first;
+      },
+      // Add Internationalizations Support
 
       debugShowCheckedModeBanner: false,
       title: 'Caloriya',
@@ -21,7 +80,10 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+          primarySwatch: Colors.blue,
+          //primaryColor: defaultTargetPlatform == TargetPlatform.android // Update Target Platform for Android Only
+              //? Colors.white
+              //: Colors.blue
       ),
       home: MyHomePage(title: 'Caloriya'),
     );
@@ -57,9 +119,9 @@ class _MyHomePageState extends State<MyHomePage> {
   double taille = 170.0;
   Map mapActivite = {
 
-    0: "Faible",
-    1: "Modere",
-    2: "Forte"
+    0: "Minimum", // Updated Text
+    1: "Stanard",
+    2: "Maximum"
   };
 
   /* Begin App Exit Alert Dialog */
@@ -67,16 +129,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return showDialog(
       context: context,
       builder: (context) => new AlertDialog(
-        title: new Text('Quitter Caloriya'),
-        content: new Text('Voulez vous vraiment quitter cette application?'),
+        title: new Text(Localization.of(context).quitterApp), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+        content: new Text(Localization.of(context).quitterAppConfirmation), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
         actions: <Widget>[
           new FlatButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: new Text('Non'),
+            child: new Text(Localization.of(context).quitterAppConfirmationNON), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
           ),
           new FlatButton(
             onPressed: () => Navigator.of(context).pop(true),
-            child: new Text('Oui'),
+            child: new Text(Localization.of(context).quitterAppConfirmationOUI), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
           ),
         ],
       ),
@@ -84,116 +146,138 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   /* End App Exit Alert Dialog */
 
-  @override
-  Widget build(BuildContext context) {
+  // https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts/
+  // Implement Tablet Support
+  Widget _buildMobileLayout() {
 
     return new WillPopScope(
       onWillPop: _onWillPop,
 
       /* return new GestureDetector( */
-    child: new GestureDetector(
-      onTap: (() => FocusScope.of(context).requestFocus(new FocusNode())),
+      child: new GestureDetector(
+        onTap: (() => FocusScope.of(context).requestFocus(new FocusNode())),
 
-      child: new Scaffold(
+        child: new Scaffold(
 
-        appBar: new AppBar(
-          title: new Text(widget.title),
-          backgroundColor: setColor(),
-        ),
+          appBar: new AppBar(
+            title: new Text(widget.title),
+            backgroundColor: setColor(),
+          ),
 
-        body: new SingleChildScrollView(
-          padding: EdgeInsets.all(15.0),
+          body: new SingleChildScrollView(
+            padding: EdgeInsets.all(15.0),
 
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: new Column(
 
-            children: <Widget>[
-              padding(),
-              texteAvecStyle("Remplissez tous les champs pour obtenir votre besoin journalier en calories."),
-              padding(),
-              new Card(
-                elevation: 10.0,
-                child: new Column(
-                  children: <Widget>[
-                    padding(),
-                    new Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        texteAvecStyle("Femme", color: Colors.pink),
-                        new Switch(
-                            value: genre,
-                            inactiveTrackColor: Colors.pink,
-                            activeTrackColor: Colors.blue,
-                            onChanged: (bool b) {
-                              setState(() {
-                                genre = b;
-                              });
-                            }),
-                        texteAvecStyle("Homme", color: Colors.blue)
-                      ],
-                    ),
-                    padding(),
-                    new RaisedButton(
-                        color: setColor(),
-                        child: texteAvecStyle((age == null)? "Appuyez pour entrer votre age": "Votre age est de : ${age.toInt()}",
-                            color: Colors.white
-                        ),
-                        onPressed: (() => montrerPicker())
-                    ),
-                    padding(),
-                    texteAvecStyle("Votre taille est de: ${taille.toInt()} cm.", color: setColor()),
-                    padding(),
-                    new Slider(
-                      value: taille,
-                      activeColor: setColor(),
-                      onChanged: (double d) {
-                        setState(() {
-                          taille = d;
-                        });
-                      },
-                      max: 215.0,
-                      min: 100.0,
-                    ),
-                    padding(),
-                    padding(),
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-                    new TextField(
+              children: <Widget>[
 
-                      textAlign: TextAlign.start,
-                      keyboardType: TextInputType.number,
-                      onChanged: (String string) {
-                        setState(() {
-                          poids = double.tryParse(string);
-                        });
-                      },
+                padding(),
+                //Localization.of(context).[string_resource_name]
+                texteAvecStyle(Localization.of(context).remplissezTousLesChamps), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+                padding(),
+                new Card(
+                  elevation: 10.0,
+                  child: new Column(
 
-                      // Centrer le texte
-                      decoration: new InputDecoration(
-                          //fillColor: Colors.grey[500],
-                          labelText: "Entrez votre poids en kilos."
+                    children: <Widget>[
+                      padding(),
+
+                      new Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          texteAvecStyle(Localization.of(context).genteFemme, color: Colors.pink), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+                          new Switch(
+                              value: genre,
+                              inactiveTrackColor: Colors.pink,
+                              activeTrackColor: Colors.blue,
+                              onChanged: (bool b) {
+                                setState(() {
+                                  genre = b;
+                                });
+                              }
+                          ),
+                          texteAvecStyle(Localization.of(context).genteHomme, color: Colors.blue)
+                        ],
                       ),
-                      // Centrer le texte
+                      padding(),
+                      new RaisedButton(
+                          color: setColor(),
+                          child: texteAvecStyle(
+                              (age == null)? (Localization.of(context).appuyerPourEntrerVotreAge) : "Age : ${age.toInt()}", // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+                              color: Colors.white
+                          ),
+                          onPressed: (() => montrerPicker())
+                      ),
+                      padding(),
+                      texteAvecStyle(
+                          "Taille/Height: ${taille.toInt()} cm.", color: setColor()
+                      ),
+                      padding(),
+                      new Slider(
+                        value: taille,
+                        activeColor: setColor(),
+                        onChanged: (double d) {
+                          setState(() {
+                            taille = d;
+                          });
+                        },
+                        max: 215.0,
+                        min: 100.0,
+                      ),
+                      padding(),
+                      //padding(), // Remove Padding to Fit The Input Text Field to Center
 
-                    ),
+                      new TextField(
+                        textAlign: TextAlign.center, // Center TextField: https://github.com/flutter/flutter/issues/9149
 
+                        maxLength: 3,
+                        maxLengthEnforced: true,
 
-                    padding(),
-                    texteAvecStyle("Quelle est votre activité sportive?", color: setColor()),
-                    padding(),
-                    rowRadio(),
-                    padding()
-                  ],
+                        autofocus: false,
+                        maxLines: 1, //https://stackoverflow.com/questions/53644897/how-do-i-remove-content-padding-from-textfield
+                        autocorrect: false, // Prevent Keyboard to suggest numbers: https://medium.com/flutter-community/a-deep-dive-into-flutter-textfields-f0e676aaab7a
+
+                        keyboardType: TextInputType.number,
+                        onChanged: (String string) {
+                          setState(() {
+                            poids = double.tryParse(string);
+                          });
+                        },
+
+                        decoration: new InputDecoration(
+
+                          contentPadding: EdgeInsets.all(15.0), // https://api.flutter.dev//flutter/material/TextField/scrollPadding.html
+                          border: InputBorder.none, // https://flutter.dev/docs/cookbook/forms/text-input
+
+                          // Modified LabelText with with HintText to ba able to center the TextField: https://github.com/flutter/flutter/issues/9149
+                          hintText: (Localization.of(context).entrezVotrePoidsEnKilos), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+
+                        ),
+                        obscureText: false, // Added to prevent stars text (example password field): https://medium.com/flutter-community/a-deep-dive-into-flutter-textfields-f0e676aaab7a
+
+                      ),
+
+                      padding(),
+                      texteAvecStyle((Localization.of(context).quelleEstVotreActiviteSportive), color: setColor()), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+                      padding(),
+                      rowRadio(),
+                      padding()
+                    ],
+                  ),
                 ),
-              ),
-              padding(),
-              new RaisedButton(
-                color: setColor(),
-                child: texteAvecStyle("Calculer", color: Colors.white),
-                onPressed: calculerNombreDeCalories,
+                padding(),
+                new RaisedButton(
+                  color: setColor(),
+                  child: texteAvecStyle((Localization.of(context).calculerCalories), color: Colors.white), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+                  onPressed: calculerNombreDeCalories,
 
-              )
+                )
 
-            ],
+              ],
+
+            ),
 
           ),
 
@@ -201,12 +285,195 @@ class _MyHomePageState extends State<MyHomePage> {
 
       ),
 
-    ),
+    );
+
+  }
+  // https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts/
+  // Implement Tablet Support
+
+  // https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts/
+  // Implement Tablet Support
+  Widget _buildTabletLayout() {
+
+    // For tablets, return a layout that has item listing on the left
+    // and item details on the right.
+    return Row(
+
+      children: <Widget>[
+
+        Flexible(
+          flex: 3,
+
+          child: new WillPopScope(
+
+            onWillPop: _onWillPop,
+
+            /* return new GestureDetector( */
+            child: new GestureDetector(
+              onTap: (() => FocusScope.of(context).requestFocus(new FocusNode())),
+
+              child: new Scaffold(
+
+                appBar: new AppBar(
+                  title: new Text(widget.title),
+                  backgroundColor: setColor(),
+                ),
+
+                body: new SingleChildScrollView(
+                  padding: EdgeInsets.all(15.0),
+
+                  child: new Column(
+
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                    children: <Widget>[
+
+                      padding(),
+                      //Localization.of(context).[string_resource_name]
+                      texteAvecStyle(Localization.of(context).remplissezTousLesChamps), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+                      padding(),
+                      new Card(
+                        elevation: 10.0,
+                        child: new Column(
+
+                          children: <Widget>[
+                            padding(),
+
+                            new Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                texteAvecStyle(Localization.of(context).genteFemme, color: Colors.pink), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+                                new Switch(
+                                    value: genre,
+                                    inactiveTrackColor: Colors.pink,
+                                    activeTrackColor: Colors.blue,
+                                    onChanged: (bool b) {
+                                      setState(() {
+                                        genre = b;
+                                      });
+                                    }
+                                ),
+                                texteAvecStyle(Localization.of(context).genteHomme, color: Colors.blue)
+                              ],
+                            ),
+                            padding(),
+                            new RaisedButton(
+                                color: setColor(),
+                                child: texteAvecStyle(
+                                    (age == null)? (Localization.of(context).appuyerPourEntrerVotreAge) : "Age : ${age.toInt()}", // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+                                    color: Colors.white
+                                ),
+                                onPressed: (() => montrerPicker())
+                            ),
+                            padding(),
+                            texteAvecStyle(
+                                "Taille/Height: ${taille.toInt()} cm.", color: setColor()
+                            ),
+                            padding(),
+                            new Slider(
+                              value: taille,
+                              activeColor: setColor(),
+                              onChanged: (double d) {
+                                setState(() {
+                                  taille = d;
+                                });
+                              },
+                              max: 215.0,
+                              min: 100.0,
+                            ),
+                            padding(),
+                            //padding(), // Remove Padding to Fit The Input Text Field to Center
+
+                            new TextField(
+                              textAlign: TextAlign.center, // Center TextField: https://github.com/flutter/flutter/issues/9149
+
+                              maxLength: 3,
+                              maxLengthEnforced: true,
+
+                              autofocus: false,
+                              maxLines: 1, //https://stackoverflow.com/questions/53644897/how-do-i-remove-content-padding-from-textfield
+                              autocorrect: false, // Prevent Keyboard to suggest numbers: https://medium.com/flutter-community/a-deep-dive-into-flutter-textfields-f0e676aaab7a
+
+                              keyboardType: TextInputType.number,
+                              onChanged: (String string) {
+                                setState(() {
+                                  poids = double.tryParse(string);
+                                });
+                              },
+
+                              decoration: new InputDecoration(
+
+                                contentPadding: EdgeInsets.all(15.0), // https://api.flutter.dev//flutter/material/TextField/scrollPadding.html
+                                border: InputBorder.none, // https://flutter.dev/docs/cookbook/forms/text-input
+
+                                // Modified LabelText with with HintText to ba able to center the TextField: https://github.com/flutter/flutter/issues/9149
+                                hintText: (Localization.of(context).entrezVotrePoidsEnKilos), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+
+                              ),
+                              obscureText: false, // Added to prevent stars text (example password field): https://medium.com/flutter-community/a-deep-dive-into-flutter-textfields-f0e676aaab7a
+
+                            ),
+
+                            padding(),
+                            texteAvecStyle((Localization.of(context).quelleEstVotreActiviteSportive), color: setColor()), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+                            padding(),
+                            rowRadio(),
+                            padding()
+                          ],
+                        ),
+                      ),
+                      padding(),
+                      new RaisedButton(
+                        color: setColor(),
+                        child: texteAvecStyle((Localization.of(context).calculerCalories), color: Colors.white), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+                        onPressed: calculerNombreDeCalories,
+
+                      )
+
+                    ],
+
+                  ),
+
+                ),
+
+              ),
+
+            ),
+
+
+
+          ),
+
+        ),
+
+
+
+      ],
 
     );
 
   }
+  // https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts/
+  // Implement Tablet Support
 
+
+  @override
+  Widget build(BuildContext context) {
+
+    // https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts/
+    // Implement Tablet Support
+    var shortestSide = MediaQuery.of(context).size.shortestSide;
+    var useMobileLayout = shortestSide < 600;
+
+    if (useMobileLayout) {
+      return _buildMobileLayout();
+    }
+
+    return _buildTabletLayout();
+    // Implement Tablet Support
+    // https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts/
+
+  }
 
   Padding padding() {
     return new Padding(padding: EdgeInsets.only(top: 20.0));
@@ -229,7 +496,6 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     }
   }
-
 
   Color setColor() {
     if (genre) {
@@ -315,13 +581,12 @@ class _MyHomePageState extends State<MyHomePage> {
         barrierDismissible: false,
         builder: (BuildContext buildContext) {
           return SimpleDialog(
-            title: texteAvecStyle("Votre besoin en calories", color: setColor()),
-            contentPadding: EdgeInsets.all(15.0),
+            title: texteAvecStyle((Localization.of(context).votreBesoinEnCalories), color: setColor()), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d            contentPadding: EdgeInsets.all(15.0),
             children: <Widget>[
               padding(),
-              texteAvecStyle("Votre besoin de base est de: $calorieBase"),
+              texteAvecStyle("Base : $calorieBase"),
               padding(),
-              texteAvecStyle("Votre besoin avec activité sportive est de : $calorieAvecActivite"),
+              texteAvecStyle("Base + Sport : $calorieAvecActivite"),
               new RaisedButton(onPressed: () {
                 Navigator.pop(buildContext);
               },
@@ -340,8 +605,8 @@ class _MyHomePageState extends State<MyHomePage> {
         barrierDismissible: false,
         builder: (BuildContext buildContext) {
           return new AlertDialog(
-            title: texteAvecStyle("Erreur"),
-            content: texteAvecStyle("Tous les champs ne sont pas remplis"),
+            title: texteAvecStyle((Localization.of(context).erreurChampsObligatoires)), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+            content: texteAvecStyle((Localization.of(context).erreurTousLesChampsNeSontPasRemplis)), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
             actions: <Widget>[
               new FlatButton(
                   onPressed: () {
