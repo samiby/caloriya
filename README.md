@@ -5,6 +5,10 @@ Caloriya est une application mobile simple, pratique, modulable & extensible pou
 * Compatible Avec Les Tablettes
 * Prise En Charge De La Langue Anglaise
 * Compatible 64-bit
+* Application Compatible avec Android™ 5.0 et +
+* Mise à Niveau Vers AndroidX
+
+Android est une marque de Google LLC.
 
 <a href='https://play.google.com/store/apps/details?id=com.caloriya.sami&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Disponible sur Google Play' src='https://play.google.com/intl/fr_FR/badges/images/generic/fr_badge_web_generic.png'/></a><br>
 Google Play et le logo Google Play sont des marques de Google LLC.
