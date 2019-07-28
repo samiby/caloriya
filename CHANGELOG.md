@@ -31,4 +31,7 @@
 ## [1.5.1] - July 28, 2019
 
 * Fix Some Bugs
+* minSDKVersion 21
+* Upgrade to AndroidX
 * App Now Supports 64-bit Devices (New Guidelines for Supporting 64-bit Devices)
+* APK Split Per ABI (ARMEABI-v7a/ARM64-v8a)
