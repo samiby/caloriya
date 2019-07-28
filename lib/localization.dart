@@ -65,6 +65,7 @@ class Localization {
   String get votreBesoinEnCalories => _getValue(VotreBesoinEnCalories);
   String get erreurChampsObligatoires => _getValue(ErreurChampsObligatoires);
   String get erreurTousLesChampsNeSontPasRemplis => _getValue(ErreurTousLesChampsNeSontPasRemplis);
+
 }
 
 class LocalizationDelegate extends LocalizationsDelegate<Localization> {

@@ -4,6 +4,7 @@ Caloriya est une application mobile simple, pratique, modulable & extensible pou
 
 * Compatible Avec Les Tablettes
 * Prise En Charge De La Langue Anglaise
+* Compatible 64-bit
 
 <a href='https://play.google.com/store/apps/details?id=com.caloriya.sami&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Disponible sur Google Play' src='https://play.google.com/intl/fr_FR/badges/images/generic/fr_badge_web_generic.png'/></a><br>
 Google Play et le logo Google Play sont des marques de Google LLC.
@@ -13,6 +14,12 @@ Une Vidéo de Présentation est désormais disponible ici: https://youtu.be/OTqb
 
 # <b>TODO</b>
 <li>Prise En Charge De Plus De Langues</li>
+<li>Menu de Navigation (Material Design)</li>
+
+## Getting Started
+
+For help getting started with Flutter, view our online
+[documentation](https://flutter.io/).
 
 # Licence
 

@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
       localeResolutionCallback:
           (Locale locale, Iterable<Locale> supportedLocales) {
         for (Locale supportedLocale in supportedLocales) {
-          // Crashes on the following line
+          //
           if (supportedLocale.languageCode == locale.languageCode ||
               supportedLocale.countryCode == locale.countryCode) {
             return supportedLocale;
@@ -86,6 +86,7 @@ class MyApp extends StatelessWidget {
               //: Colors.blue
       ),
       home: MyHomePage(title: 'Caloriya'),
+
     );
   }
 }
@@ -110,6 +111,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  final scaffoldKey = new GlobalKey<ScaffoldState>();
+
   int calorieBase;
   int calorieAvecActivite;
   int radioSelectionnee;
@@ -120,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Map mapActivite = {
 
     0: "Minimum", // Updated Text
-    1: "Stanard",
+    1: "Standard", // Updated Text
     2: "Maximum"
   };
 
@@ -146,8 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   /* End App Exit Alert Dialog */
 
-  // https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts/
-  // Implement Tablet Support
+  // BEGIN Implementing Tablet Support: Inspired from https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts
   Widget _buildMobileLayout() {
 
     return new WillPopScope(
@@ -281,6 +283,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           ),
 
+
         ),
 
       ),
@@ -288,11 +291,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
   }
-  // https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts/
-  // Implement Tablet Support
+  // END Implementing Tablet Support: Inspired from https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts
 
-  // https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts/
-  // Implement Tablet Support
+  // BEGIN Implementing Tablet Support: Inspired from https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts
   Widget _buildTabletLayout() {
 
     // For tablets, return a layout that has item listing on the left
@@ -436,32 +437,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 ),
 
+
               ),
 
             ),
 
-
-
           ),
 
         ),
-
-
 
       ],
 
     );
 
   }
-  // https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts/
-  // Implement Tablet Support
+  // END Implementing Tablet Support: Inspired from https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts
 
-
+  // BEGIN Implementing Mobile/Tablet Layout BuildContext: Inspired from https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts
   @override
   Widget build(BuildContext context) {
 
-    // https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts/
-    // Implement Tablet Support
     var shortestSide = MediaQuery.of(context).size.shortestSide;
     var useMobileLayout = shortestSide < 600;
 
@@ -470,10 +465,9 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     return _buildTabletLayout();
-    // Implement Tablet Support
-    // https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts/
 
   }
+  // END Implementing Mobile/Tablet Layout BuildContext: Inspired from https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts
 
   Padding padding() {
     return new Padding(padding: EdgeInsets.only(top: 20.0));
@@ -581,7 +575,8 @@ class _MyHomePageState extends State<MyHomePage> {
         barrierDismissible: false,
         builder: (BuildContext buildContext) {
           return SimpleDialog(
-            title: texteAvecStyle((Localization.of(context).votreBesoinEnCalories), color: setColor()), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d            contentPadding: EdgeInsets.all(15.0),
+            title: texteAvecStyle((Localization.of(context).votreBesoinEnCalories), color: setColor()), // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
+            // contentPadding: EdgeInsets.all(15.0),
             children: <Widget>[
               padding(),
               texteAvecStyle("Base : $calorieBase"),

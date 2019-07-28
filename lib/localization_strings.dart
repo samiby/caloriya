@@ -31,7 +31,7 @@ Github Repo: https://github.com/samiby/caloriya
 
 // Add Internationalizations Support: https://medium.com/flutterpub/improve-your-i18n-in-flutter-f3e960fca86d
 const String
-QuitterApp = 'quitter_app',
+    QuitterApp = 'quitter_app',
     QuitterAppConfirmation = 'quitter_app_confirmation',
     QuitterAppConfirmationNon = 'quitter_app_confirmation_non',
     QuitterAppConfirmationOui = 'quitter_app_confirmation_oui',
@@ -47,6 +47,7 @@ QuitterApp = 'quitter_app',
     GenteHomme = 'gente_homme';
 
 final en = {
+
   QuitterApp: 'Exit Caloriya',
   QuitterAppConfirmation: 'Do You Really Want To Exit This Application?',
   QuitterAppConfirmationNon: 'CANCEL',
@@ -61,9 +62,11 @@ final en = {
   ErreurChampsObligatoires: 'Error',
   ErreurTousLesChampsNeSontPasRemplis: 'All Fields Are Not Filled',
   RemplissezTousLesChamps: 'Fill In All The Required Fields to Obtain Your Daily Calories Need.'
+
 };
 
 final fr = {
+
   QuitterApp: 'Quitter Caloriya',
   QuitterAppConfirmation: 'Voulez Vous Vraiment Quitter Cette Application?',
   QuitterAppConfirmationNon: 'ANNULER',
@@ -72,10 +75,11 @@ final fr = {
   GenteHomme: 'Homme',
   AppuyerPourEntrerVotreAge: 'Appuyez Pour Entrer Votre Age',
   EntrezVotrePoidsEnKilos: 'Entrez Votre Poids En Kilos.',
-  QuelleEstVotreActiviteSportive: 'Quelle Est Votre Activite Sportive ?',
+  QuelleEstVotreActiviteSportive: 'Quelle Est Votre Activité Sportive ?',
   CalculerCalories: 'Calculer',
   VotreBesoinEnCalories: 'Votre Besoin En Calories',
   ErreurChampsObligatoires: 'Erreur',
   ErreurTousLesChampsNeSontPasRemplis: 'Tous Les Champs Ne Sont Pas Remplis',
   RemplissezTousLesChamps: 'Remplissez Tous Les Champs Pour Obtenir Votre Besoin Journalier En Calories.'
+
 };

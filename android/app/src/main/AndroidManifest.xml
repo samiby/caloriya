@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.caloriya.sami"
-    android:versionCode="400002"
-    android:versionName="1.5.0">
+    android:versionCode="500010"
+    android:versionName="1.5.1">
 
     <!-- <uses-permission android:name="android.permission.INTERNET"/>-->
 
