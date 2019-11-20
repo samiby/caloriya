@@ -7,6 +7,8 @@ Caloriya est une application mobile simple, pratique, modulable & extensible pou
 * Compatible 64-bit
 * Application Compatible avec Android™ 5.0 et +
 * Mise à Niveau Vers AndroidX
+* Application Supporte Android SDK 29 (Nouvelles Recommandations de Google)
+* APK Split Per ABI (ARMEABI-v7a/ARM64-v8a)
 
 Android est une marque de Google LLC.
 

@@ -35,3 +35,10 @@
 * Upgrade to AndroidX
 * App Now Supports 64-bit Devices (New Guidelines for Supporting 64-bit Devices)
 * APK Split Per ABI (ARMEABI-v7a/ARM64-v8a)
+
+## [1.5.2] - November 20, 2019
+
+* Fix Minor Bugs
+* minSDKVersion 21
+* App Now Supports SDK 29 (Google New Recommendations)
+* APK Split Per ABI (ARMEABI-v7a/ARM64-v8a)
