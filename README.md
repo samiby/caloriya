@@ -4,11 +4,12 @@ Caloriya est une application mobile simple, pratique, modulable & extensible pou
 
 * Compatible Avec Les Tablettes
 * Prise En Charge De La Langue Anglaise
+* Prise En Charge De La Langue Allemande
 * Compatible 64-bit
 * Application Compatible avec Android™ 5.0 et +
 * Mise à Niveau Vers AndroidX
 * Application Supporte Android SDK 29 (Nouvelles Recommandations de Google)
-* APK Split Per ABI (ARMEABI-v7a/ARM64-v8a)
+* APK Split Per ABI ARMEABI-v7a/ARM64-v8a/x86_64 (Google Flutter 2.7.0)
 
 Android est une marque de Google LLC.
 
@@ -21,6 +22,12 @@ Une Vidéo de Présentation est désormais disponible ici: https://youtu.be/OTqb
 # <b>TODO</b>
 <li>Prise En Charge De Plus De Langues</li>
 <li>Menu de Navigation (Material Design)</li>
+<li>Add About App Page</li>
+<li>Add About Developer Page</li>
+<li>Add License Page</li>
+<li>Add Credits Page (CardView + Link to Developers)</li>
+<li>Add Rate The App</li>
+<li>Add Share The App</li>
 
 ## Getting Started
 

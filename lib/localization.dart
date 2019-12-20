@@ -47,6 +47,7 @@ class Localization {
   static Map<String, Map<String, String>> _localizedValues = {
     'en' : en,
     'fr' : fr,
+    'de' : de,
   };
 
   _getValue(String key) => _localizedValues[locale.languageCode][key];
@@ -72,7 +73,7 @@ class LocalizationDelegate extends LocalizationsDelegate<Localization> {
   const LocalizationDelegate();
 
   @override
-  bool isSupported(Locale locale) => ['en', 'fr'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => ['en', 'fr', 'de'].contains(locale.languageCode);
 
   @override
   Future<Localization> load(Locale locale) {

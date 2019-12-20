@@ -83,3 +83,22 @@ final fr = {
   RemplissezTousLesChamps: 'Remplissez Tous Les Champs Pour Obtenir Votre Besoin Journalier En Calories.'
 
 };
+
+final de = {
+
+  QuitterApp: 'Caloriya Beenden',
+  QuitterAppConfirmation: 'Wollen Sie Wirklich diese Anwendung Beenden?',
+  QuitterAppConfirmationNon: 'ABBRECHEN',
+  QuitterAppConfirmationOui: 'BEENDEN',
+  GenteFemme: 'Frau',
+  GenteHomme: 'Mann',
+  AppuyerPourEntrerVotreAge: 'Bitte Geben Sie Ihr Alter Ein',
+  EntrezVotrePoidsEnKilos: 'Ihr Gewicht in Kilo Eingeben.',
+  QuelleEstVotreActiviteSportive: 'Wie Ist Ihre Sportliche Aktivität?',
+  CalculerCalories: 'Berechnen',
+  VotreBesoinEnCalories: 'Ihr Kalorienbedarf',
+  ErreurChampsObligatoires: 'Fehler',
+  ErreurTousLesChampsNeSontPasRemplis: 'Nicht Alle Felder Sind Ausgefüllt',
+  RemplissezTousLesChamps: 'Füllen Sie Bitte Alle Felder Aus, Um Ihren Täglichen Kalorienbedarf zu Erhalten.'
+
+};

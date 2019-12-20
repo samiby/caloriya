@@ -42,3 +42,11 @@
 * minSDKVersion 21
 * App Now Supports SDK 29 (Google New Recommendations)
 * APK Split Per ABI (ARMEABI-v7a/ARM64-v8a)
+
+## [1.5.3] - December 20, 2019
+
+* Fix Minor Bugs
+* minSDKVersion 21
+* App Now Supports SDK 29 (Google New Recommendations)
+* Add German Language Support
+* APK Split Per ABI (ARMEABI-v7a/ARM64-v8a/x86_64)

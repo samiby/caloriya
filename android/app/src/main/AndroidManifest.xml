@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.caloriya.sami"
     android:versionCode="510010"
-    android:versionName="1.5.2">
+    android:versionName="1.5.3">
 
     <!-- <uses-permission android:name="android.permission.INTERNET"/>-->
 
